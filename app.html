@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <script src="src/SpeechProASR.js"></script>
+    <script type="text/javascript">
+    let asr = new SpeechProASR({
+        "client": {
+            "username": "",
+            "password": "",
+            "domain_id": ""
+        },
+        "recorder": true, //default false
+    });
+
+    asr.complete = function() {
+        //  asr object initialized, here you can use the available methods
+
+        //  Events
+
+        asr.recognizeComplete = function(result) {
+            //  result = {
+            //    "score": recognize score,
+            //    "text": recognized text,
+            //  }
+            console.log(result);
+        }
+
+        asr.recognizeError = function(error) {
+            //  recognize error
+            debugger;
+        }
+
+        asr.recognizeSocketComplete = function(result) {
+            //  result = recognized text
+            debugger;
+        }
+
+        asr.recognizeSocketCompleteFinal = function(result) {
+            //  result = {
+            //    "score": recognize score,
+            //    "text": recognized text,
+            //  }
+            debugger;
+        }
+    }
+    </script>
+</head>
+
+<body>
+	<!-- https://github.com/STC-VoiceKey/stc-speechkit-web#examples -->
+
+	<button onclick="asr.startRecord();">start</button>
+	<button onclick="asr.stopRecord();">stop</button>
+	
+</body>
+
+</html>
